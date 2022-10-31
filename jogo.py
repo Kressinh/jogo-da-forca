@@ -1,11 +1,13 @@
-from funcoes.definicoes import verificanome, verificachave, verificadicaeletra, confere, vencedor, arquivar, mostrapartidas
-from funcoes.tela import limpatela
+#Helen Kressin RA 1131995
+
+from funcoes.definicoes import verificaNome, verificaChave, verificaDicaeLetra, confere, vencedor, arquivar,mostrarPartida
+from funcoes.tela import limpaTela
 import sys
 import time
 
 while True:
 
-    limpatela()
+    limpaTela()
     print("              Jogo da forca!")
     print(" Para confirmar lembre-se de precionar 'ENTER'.")
     print(" Não é permitido deixar em branco nenhum dos formulários e nem usar números.")
@@ -17,17 +19,17 @@ while True:
         try:
             desafiante = int(desafiante)
             competidor = int(competidor)
-            limpatela()
+            limpaTela()
             print("Você preencheu algo incorretamente.")
         except:
-            aceitanome = verificanome(desafiante, competidor)
-            if aceitanome == False:
-                limpatela()
+            aceitaNome = verificaNome(desafiante, competidor)
+            if aceitaNome == False:
+                limpaTela()
                 print("Você preencheu algo incorretamente.")
             else:
                 break
 
-    limpatela()
+    limpaTela()
     print("       Para o desafiante apenas")
 
     while True:
@@ -39,36 +41,36 @@ while True:
             dica1 = int(dica1)
             dica2 = int(dica2)
             dica3 = int(dica3)
-            limpatela()
+            limpaTela()
             print("Você preencheu algo incorretamente.")
         except:
-            aceitachave = verificachave(dica1, dica2, dica3, chave)
-            if aceitachave == False:
-                limpatela()
+            aceitaChave= verificaChave(dica1, dica2, dica3, chave)
+            if aceitaChave== False:
+                limpaTela()
                 print("Você preencheu algo incorretamente.")
             else:
                 break
 
-    limpatela()
-    numeroletras = 0
+    limpaTela()
+    numeroLetras = 0
     for i in chave:
-        numeroletras = numeroletras + 1
+        numeroLetras = numeroLetras + 1
 
     mostrar = []
     contador = 0
 
-    while contador != numeroletras:
+    while contador != numeroLetras:
         mostrar.append(' _ ')
         contador = contador+1
 
-    print("Número de letras da palavra : ",numeroletras)
-    print(" _ "*numeroletras)
+    print("Número de letras da palavra : ",numeroLetras)
+    print(" _ "*numeroLetras)
 
     udica1 = False
     udica2 = False
     udica3 = False
     escolha = ""
-    contadica = 0
+    contaDica= 0
     Nerros = 0
 
     while True:
@@ -87,20 +89,20 @@ while True:
                 print(">>>>> Mais sorte na proxima ", desafiante,".")
                 vencedor = competidor
             time.sleep(3)
-            limpatela()
+            limpaTela()
             break
-        elif contadica > 2:
+            elifcontaDica> 2
             
-            limpatela()
+            limpaTela()
             print("Primeira dica: ", dica1)
             print("Segunda dica: ", dica2)
             print("Terceira dica: ", dica3)
             print(' '.join(mostrar))
-            letra = verificadicaeletra(dica1,udica1,dica2,udica2,dica3,udica3,contadica)
+            letra = verificaDicaeLetra(dica1,udica1,dica2,udica2,dica3,udica3,contaDica)
             if len(letra) == False:
                 print("Resposta invalida.")
             else:
-                Nerros = confere(chave,letra,mostrar,numeroletras,Nerros)
+                Nerros = confere(chave,letra,mostrar,numeroLetras,Nerros)
                 print(' '.join(mostrar))
                 print('----------------------------------------------')
         else:
@@ -108,25 +110,25 @@ while True:
             escolha = input("Precione 0 para Jogar ou 1 para Solicitar dica: ")
             print('----------------------------------------------')
             if escolha == "0":
-                limpatela()
+                limpaTela()
                 print(' '.join(mostrar))
                 letra = input("Qual o seu palpite de letra? ")
                 if len(letra) == False:
                     print("Resposta invalida.")
                 else:
-                    Nerros = confere(chave,letra,mostrar,numeroletras,Nerros)
+                    Nerros = confere(chave,letra,mostrar,numeroLetras,Nerros)
                     print(' '.join(mostrar))
                     print('----------------------------------------------')
 
             elif escolha == "1":
-                limpatela()
+                limpaTela()
                 print(' '.join(mostrar))
-                letra = verificadicaeletra(dica1,udica1,dica2,udica2,dica3,udica3,contadica)
+                letra = verificaDicaeLetra(dica1,udica1,dica2,udica2,dica3,udica3,contaDica)
                 if letra != False:
-                    contadica = contadica + 1
-                    Nerros = confere(chave,letra,mostrar,numeroletras,Nerros)
-                    print(' '.join(mostrar))
-                    print('----------------------------------------------')
+                   contaDica=contaDica+ 1
+                Nerros = confere(chave,letra,mostrar,numeroLetras,Nerros)
+                print(' '.join(mostrar))
+                print('----------------------------------------------')
 
             else:
 
@@ -136,13 +138,13 @@ while True:
     if vencedor == desafiante or vencedor == competidor:
 
         arquivar(desafiante,competidor,vencedor,chave)
-        limpatela()
+        limpaTela()
         print("               HISTÓRICO DE PARTIDAS")
-        mostrarlog = mostrapartidas()
+        mostrarlog =mostrarPartida()
         print(mostrarlog)
         print("Você quer jogar novamente?")
         print("(1)Sim (0)Não")
         jogar = input()
         if jogar == "0":
-            limpatela()
+            limpaTela()
             sys.exit(0)

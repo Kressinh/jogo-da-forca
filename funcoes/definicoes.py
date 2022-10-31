@@ -1,11 +1,11 @@
 import time
-def verificanome(desafiante,competidor):
+def verificaNome(desafiante,competidor):
     if desafiante == "" or competidor ==  "":
         return False
     elif desafiante == " " or competidor ==  " ":
         return False
 
-def verificachave(dica1,dica2,dica3,chave):
+def verificaChave(dica1,dica2,dica3,chave):
     if dica1 == "" or dica2 ==  "" or dica3 == "":
         return False
     elif dica1 == " " or dica2 ==  " " or dica3 == " ":
@@ -16,32 +16,32 @@ def verificachave(dica1,dica2,dica3,chave):
 def vencedor(desafiante,competidor,numero_de_erros):
     if numero_de_erros == 5:
 
-        print("               VOCÊ PERDEU")
-        print(">>>>>", desafiante, "é o vencedor.")
-        print(">>>>> Mais sorte na proxima ", competidor,".")
+        print("               Você Perdeu!")
+        print(">>>>>", desafiante, "é o vencedor!")
+        print(">>>>> Mais sorte na próxima ", competidor,".")
         return False
     else:
 
-        print("               VOCÊ VENCEU")
+        print("               Você Venceu!")
         print(">>>>>", competidor, "é o vencedor.")
         print(">>>>> Mais sorte na proxima ", desafiante,".")
         return True
 
-def verificadicaeletra(dica1,udica1,dica2,udica2,dica3,udica3,contadica):
-    if contadica == 0:
+def verificaDicaeLetra(dica1,udica1,dica2,udica2,dica3,udica3,contaDica):
+    if contaDica == 0:
         
         print("               Primeira dica:")
         print("Primeira dica: ", dica1)
         udica1 = True
         letra = input("Qual é o seu palpite de letra? ")
         if len(letra) > 1 :
-            print("Resposta invalida")
+            print("Resposta inválida")
             udica1 = False
             return False
         else:
             return letra
 
-    elif contadica == 1:
+    elif contaDica == 1:
 
         print("               Segunda dica:")
         print("Primeira dica: ", dica1)
@@ -55,7 +55,7 @@ def verificadicaeletra(dica1,udica1,dica2,udica2,dica3,udica3,contadica):
         else:
             return letra
 
-    elif contadica == 2:
+    elif contaDica == 2:
 
         print("               Terceira dica:")
         print("Primeira dica: ", dica1)
@@ -65,14 +65,14 @@ def verificadicaeletra(dica1,udica1,dica2,udica2,dica3,udica3,contadica):
         print("                 Não há mais dicas")
         letra = input("Qual é o seu palpite de letra? ")
         if len(letra) > 1 :
-            print("Resposta invalida")
+            print("Resposta inválida")
             return False
         else:
             return letra
     else:
         letra = input("Qual é o seu palpite de letra? ")
         if len(letra) > 1 :
-            print("Resposta invalida")
+            print("Resposta inválida")
             return False
         else:
             return letra
@@ -124,7 +124,7 @@ def arquivar(desafiante,competidor,vencedor,resposta):
     arquivo.write(resposta)
     arquivo.write(".\n")
 
-def mostrapartidas():
+def mostrarPartida():
     arquivo = open("registro_de_partidas.txt", "r")
     conteudo = arquivo.read()
     return conteudo
